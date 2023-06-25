@@ -1,13 +1,16 @@
 package org.example.Restaurants.Controller;
 
 
+import jakarta.validation.Valid;
 import org.example.Restaurants.Model.Restaurant;
 import org.example.Restaurants.Service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Validated
 @RestController
 public class RestaurantController {
 
@@ -30,7 +33,7 @@ public class RestaurantController {
 
     //Post Mapping to add a list of restaurants
     @PostMapping("addRestaurants")
-    public String addRestaurants(@RequestBody List<Restaurant> restaurants)
+    public String addRestaurants(@Valid @RequestBody List<Restaurant> restaurants)
     {
         return restaurantService.addRestaurants(restaurants);
     }
